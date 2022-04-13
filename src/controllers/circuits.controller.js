@@ -77,7 +77,7 @@ const updateOneById = async (req, res) => {
 };
 
 // suppression d'un circuit
-const deleteOne = async (req, res) => {
+const deleteOneById = async (req, res) => {
   const { id } = req.params;
   try {
     const [result] = await Circuits.deleteOneById(id);
@@ -96,5 +96,5 @@ module.exports = {
   getOneById,
   createOne,
   updateOneById,
-  deleteOne,
+  deleteOneById,
 };

@@ -24,6 +24,8 @@ const getOneById = async (req, res) => {
   }
 };
 
+
+
 // Méthode qui permet de supprimer un utilisateur par son ID
 const deleteOneById = async (req, res) => {
   const { id } = req.params;

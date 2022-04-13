@@ -8,9 +8,6 @@ rulesRouter.get("/:id", RulesController.getOneById);
 // POST
 rulesRouter.post("/", RulesController.createOne, RulesController.getOneById);
 
-// PUT
-rulesRouter.put("/:id", RulesController.updateOneById);
-
 // DELETE
 rulesRouter.delete("/:id", RulesController.deleteOneById);
 

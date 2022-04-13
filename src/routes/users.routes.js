@@ -6,10 +6,10 @@ usersRouter.get("/", UsersController.getAll);
 usersRouter.get("/:id", UsersController.getOneById);
 
 // POST
-usersRouter.post("/", UsersController.createOne, UsersController.getOneById);
+usersRouter.post("/", UsersController.getOneById);
 
 // PUT
-usersRouter.put("/:id", UsersController.updateOneById);
+// usersRouter.put("/:id", UsersController.updateOneById);
 
 // DELETE
 usersRouter.delete("/:id", UsersController.deleteOneById);

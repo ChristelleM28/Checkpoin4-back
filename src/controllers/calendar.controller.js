@@ -35,7 +35,7 @@ const getOneById = async (req, res) => {
 
 
 // suppression d'un  calendrier
-const deleteOne = async (req, res) => {
+const deleteOneById = async (req, res) => {
   const { id } = req.params;
   try {
     const [result] = await Calendar.deleteOneById(id);
@@ -53,5 +53,5 @@ module.exports = {
   getAll,
   getOneById,
   createOne,
-  deleteOne,
+  deleteOneById,
 };
