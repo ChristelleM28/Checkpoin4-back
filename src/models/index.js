@@ -1,4 +1,7 @@
-// Exemple content of this file //
+const Users = require("./users.model");
+const Rules = require("./rules.model");
+const Infos = require("./infos.model");
+const Circuits = require("./circuits.model");
+const Calendar = require("./calendar.model");
 
-// const exampleModels = require("./Example.models");
-// module.exports = { exampleModels };
+module.exports = {Users, Rules, Infos, Circuits, Calendar}
