@@ -9,7 +9,7 @@ usersRouter.get("/:id", UsersController.getOneById);
 usersRouter.post("/", UsersController.createOne, UsersController.getOneById);
 
 // PUT
-usersRouter.put("/:id", UsersController.updateOneById);
+// usersRouter.put("/:id", UsersController.updateOneById);
 
 // DELETE
 usersRouter.delete("/:id", UsersController.deleteOneById);

@@ -1,7 +1,7 @@
-const UsersController = require("./users.controllers");
-const InfosController = require("./infos.controllers");
-const RulesController = require("./rules.controllers");
-const CircuitsController = require("./circuits.controllers");
-const CalendarController = require("./calendar.controllers");
+const UsersController = require("./users.controller");
+const InfosController = require("./infos.controller");
+const RulesController = require("./rules.controller");
+const CircuitsController = require("./circuits.controller");
+const CalendarController = require("./calendar.controller");
 
 module.exports = { UsersController, InfosController, RulesController, CircuitsController, CalendarController };

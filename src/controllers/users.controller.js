@@ -24,6 +24,26 @@ const getOneById = async (req, res) => {
   }
 };
 
+// création d'un nouveau user
+const createOne = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    res.status(400).send(`You must provide all mandatories datas`);
+  } else {
+    try {
+      const [result] = await Users.createOne({
+        email,
+        password,
+      });
+      req.id = result.insertId;
+      next();
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
+  }
+};
+
 // Méthode qui permet de supprimer un utilisateur par son ID
 const deleteOneById = async (req, res) => {
   const { id } = req.params;
@@ -39,4 +59,4 @@ const deleteOneById = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getOneById, deleteOneById };
+module.exports = { getAll, getOneById, createOne, deleteOneById };
