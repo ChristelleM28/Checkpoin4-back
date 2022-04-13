@@ -1,4 +1,7 @@
-// Exemple content of this file //
+const UsersController = require("./users.controllers");
+const InfosController = require("./infos.controllers");
+const RulesController = require("./rules.controllers");
+const CircuitsController = require("./circuits.controllers");
+const CalendarController = require("./calendar.controllers");
 
-// const ExampleController = require("./example.controllers");
-// module.exports = { ExampleController };
+module.exports = { UsersController, InfosController, RulesController, CircuitsController, CalendarController };
