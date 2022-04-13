@@ -6,7 +6,7 @@ usersRouter.get("/", UsersController.getAll);
 usersRouter.get("/:id", UsersController.getOneById);
 
 // POST
-usersRouter.post("/", UsersController.getOneById);
+usersRouter.post("/", UsersController.createOne, UsersController.getOneById);
 
 // PUT
 // usersRouter.put("/:id", UsersController.updateOneById);

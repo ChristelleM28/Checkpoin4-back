@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const { Circuits } = require("../models");
 
 // recherche de tous les circuits
@@ -36,7 +37,7 @@ const createOne = async (req, res) => {
 // mise à jour d(un nouveau circuit)
 const updateOneById = async (req, res) => {
   const { id } = req.params;
-// j'indique les données que je veux récupérer dans le body
+  // j'indique les données que je veux récupérer dans le body
   const { name, time, address, circuit_link, assets_circuit } = req.body;
 
   if (!name && !time && !address && !circuit_link && !assets_circuit) {
