@@ -11,6 +11,7 @@ Liste des packages pré-configuré ci-dessous:
 - prettier
 - eslint - rules Airbnb
 - db-migrate
+- nodemon
 
 ## Installation
 
