@@ -1,7 +1,6 @@
 const { connection } = require("../../db-connection");
 
 class Infos {
-
   static findAll() {
     const sql = "SELECT * FROM infos";
     return connection.promise().query(sql);
@@ -12,7 +11,6 @@ class Infos {
     return connection.promise().query(sql, [id]);
   }
 
-
   static createOne(info) {
     const sql = "INSERT INTO infos SET ?";
     return connection.promise().query(sql, [info]);
@@ -22,7 +20,6 @@ class Infos {
     const sql = "UPDATE infos SET ? WHERE id=?";
     return connection.promise().query(sql, [info, id]);
   }
-
 
   static deleteOneById(id) {
     const sql = "DELETE FROM infos WHERE id=?";

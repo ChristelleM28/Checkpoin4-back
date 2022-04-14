@@ -12,7 +12,7 @@ class Users {
     return connection.promise().query(sql, [id]);
   }
 
-  //pour le post: création nouvel utilisateur
+  // pour le post: création nouvel utilisateur
   static createOne(email) {
     const sql = "INSERT INTO users SET ?";
     return connection.promise().query(sql, [email]);

@@ -1,8 +1,6 @@
-
 const { connection } = require("../../db-connection");
 
 class Circuits {
-
   static findAll() {
     const sql = "SELECT * FROM circuits";
     return connection.promise().query(sql);

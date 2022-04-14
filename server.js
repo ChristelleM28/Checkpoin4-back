@@ -1,12 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 
+const cors = require("cors");
+
 const app = express();
 const mainRouter = require("./src/routes");
+
 const { connection } = require("./db-connection");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors({ origin: process.env.CLIENT_ORIGIN }));
 
 // Prefix all routes with /api
 app.use("/api", mainRouter);

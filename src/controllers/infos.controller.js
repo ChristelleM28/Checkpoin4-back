@@ -21,23 +21,53 @@ const getOneById = async (req, res) => {
 };
 
 const createOne = async (req, res) => {
-  try {
-    const [result] = await Infos.createOne(req.info);
-    const [[infos]] = await Infos.findOneById(result.insertId);
-    res.status(201).send(infos);
-  } catch (err) {
-    res.status(500).send(err.message);
+  const { title, description, date } = req.body;
+  if (!title || !description || !date) {
+    res.status(400).send(`You must provide all mandatories datas`);
+  } else {
+    try {
+      const [result] = await Infos.createOne({
+        title,
+        description,
+        date,
+      });
+      const [[info]] = await Infos.findOneById(result.insertId);
+      res.status(200).send(info);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
   }
 };
 
+// const updateOneById = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const [result] = await Infos.updateOne(req.info, id);
+//     const [[infos]] = await Infos.findOneById(id);
+//     res.status(200).send(infos);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// };
+
 const updateOneById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Infos.updateOneById(req.info, id);
-    const [[infos]] = await Infos.findOneById(id);
-    res.status(200).send(infos);
-  } catch (err) {
-    res.status(500).send(err.message);
+  const { id } = req.params;
+  const { title, description, date } = req.body;
+  if (!title && !description && !date) {
+    res.status(400).send(`Datas invalid`);
+  } else {
+    req.infos = { title, description, date };
+
+    try {
+      const [result] = await Infos.updateOne(req.infos, id);
+      if (result.affectedRows === 0) {
+        res.status(404).send(`infos with id ${id} not found`);
+      } else {
+        res.status(200).send(`Update OK`);
+      }
+    } catch (err) {
+      return res.status(500).send(err.message);
+    }
   }
 };
 

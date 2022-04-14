@@ -20,13 +20,20 @@ const getOneById = async (req, res) => {
   }
 };
 
-const createOne = async (req, res) => {
-  try {
-    const [result] = await Rules.createOne(req.rule);
-    const [[rules]] = await Rules.findOneById(result.insertId);
-    res.status(201).send(rules);
-  } catch (err) {
-    res.status(500).send(err.message);
+const createOne = async (req, res, next) => {
+  const { assets } = req.body;
+  if (!assets) {
+    res.status(400).send(`You must provide all mandatories datas`);
+  } else {
+    try {
+      const [result] = await Rules.createOne({
+        assets,
+      });
+      req.id = result.insertId;
+      next();
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
   }
 };
 

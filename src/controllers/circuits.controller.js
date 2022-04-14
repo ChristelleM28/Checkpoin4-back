@@ -23,14 +23,23 @@ const getOneById = async (req, res) => {
   }
 };
 
-// création d'un nouveau calendrier
+// création d'un nouveau circuit
 const createOne = async (req, res) => {
-  try {
-    const [result] = await Circuits.createOne(req.circuit);
-    const [[circuit]] = await Circuits.findOneById(result.insertId);
-    res.status(201).send(circuit);
-  } catch (err) {
-    res.status(500).send(err.message);
+  const { name, time, address } = req.body;
+  if (!name || !time || !address) {
+    res.status(400).send(`You must provide all mandatories datas`);
+  } else {
+    try {
+      const [result] = await Circuits.createOne({
+        name,
+        time,
+        address,
+      });
+      const [[circuit]] = await Circuits.findOneById(result.insertId);
+      res.status(200).send(circuit);
+    } catch (err) {
+      res.status(500).send(err.message);
+    }
   }
 };
 
